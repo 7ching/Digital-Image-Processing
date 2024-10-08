@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # -----scaling image-----
-image = cv2.imread('selfie.jpg')
+image = cv2.imread('../origin.png')
 
 def scale_image(image, scale_factor, method):
     size_new = (int(image.shape[1] * scale_factor), int(image.shape[0] * scale_factor))
@@ -18,8 +18,10 @@ shrinked_image_bicubic = scale_image(image, 0.12, cv2.INTER_CUBIC)
 zoomed_image_bicubic   = scale_image(shrinked_image_bicubic, 7, cv2.INTER_CUBIC)
 
 # save
-cv2.imwrite('bilibear.jpg', zoomed_image_bilinear)
-cv2.imwrite('bicubic.jpg',  zoomed_image_bicubic)
+cv2.imwrite('../results/ex1_bilinear_shrink.png', shrinked_image_bilinear)
+cv2.imwrite('../results/ex1_bilinear_zoom.png', zoomed_image_bilinear)
+cv2.imwrite('../results/ex1_bicubic_shrink.png',  shrinked_image_bicubic)
+cv2.imwrite('../results/ex1_bicubic_zoom.png',  zoomed_image_bicubic)
 
 # -----calculating quality-----
 
